@@ -1,0 +1,155 @@
+import 'package:doctor_appointment/core/constants/app_colors.dart';
+import 'package:doctor_appointment/features/auth/view/login_view.dart';
+import 'package:doctor_appointment/features/auth/widgets/custom_account_text.dart';
+import 'package:doctor_appointment/features/auth/widgets/custom_form_field.dart';
+import 'package:doctor_appointment/features/auth/widgets/custom_header.dart';
+import 'package:doctor_appointment/features/auth/widgets/custom_rich_text.dart';
+import 'package:doctor_appointment/features/auth/widgets/divider_widget.dart';
+import 'package:doctor_appointment/features/auth/widgets/social_login.dart';
+import 'package:doctor_appointment/shared/custom_btn.dart';
+import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+
+class SignupView extends StatelessWidget {
+  SignupView({super.key});
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController genderController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.backgroundColor,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30),
+        child: Form(
+          key: _formKey,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Gap(60),
+
+                /// Header
+                CustomHeader(
+                  title: 'Create Account',
+                  description:
+                      "Sign up now and start exploring all that our\napp has to offer. We're excited to welcome\nyou to our community!",
+                ),
+                Gap(17),
+
+                /// Fields
+                Column(
+                  children: [
+                    /// Name field
+                    CustomFormField(
+                      hint: 'Username',
+                      controller: nameController,
+                      isPassword: false,
+                      keyboardType: TextInputType.name,
+                    ),
+                    Gap(10),
+
+                    /// Email field
+                    CustomFormField(
+                      hint: 'Email',
+                      controller: emailController,
+                      isPassword: false,
+                      keyboardType: TextInputType.emailAddress,
+                    ),
+                    Gap(10),
+
+                    /// Phone field
+                    CustomFormField(
+                      hint: 'Your Number',
+                      controller: phoneController,
+                      isPassword: false,
+                      keyboardType: TextInputType.number,
+                    ),
+                    Gap(12),
+
+                    /// Gender field
+                    CustomFormField(
+                      hint: 'Your Gender',
+                      controller: genderController,
+                      isPassword: false,
+                      keyboardType: TextInputType.emailAddress,
+                    ),
+                    Gap(8),
+
+                    /// Password field
+                    CustomFormField(
+                      hint: 'Password',
+                      controller: passwordController,
+                      isPassword: true,
+                      keyboardType: TextInputType.emailAddress,
+                    ),
+                    Gap(8),
+
+                    /// Password Confirm field
+                    CustomFormField(
+                      hint: 'Confirm Password',
+                      controller: confirmPasswordController,
+                      isPassword: true,
+                      keyboardType: TextInputType.emailAddress,
+                    ),
+                    Gap(16),
+                  ],
+                ),
+
+                /// SignUp Btn
+                CustomBtn(
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (c) => LoginView()),
+                      );
+                    }
+                  },
+                  text: 'Create Account',
+                  width: MediaQuery.of(context).size.width,
+                  height: 52,
+                  bgColor: AppColors.primaryColor,
+                  foregroundColor: AppColors.backgroundColor,
+                  size: 16,
+                  weight: FontWeight.w600,
+                ),
+                Gap(16),
+
+                /// divider
+                DividerWidget(),
+                Gap(16),
+
+                /// Login icon
+                SocialLogin(),
+                Gap(16),
+
+                /// Privacy Policy
+                CustomRichText(),
+                Gap(8),
+
+                /// Go TO SignUP
+                CustomAccountText(
+                  text: ' Login',
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (c) => LoginView()),
+                    );
+                  },
+                ),
+                Gap(8),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

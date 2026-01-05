@@ -1,10 +1,15 @@
+import 'package:dio/dio.dart';
 import 'package:doctor_appointment/core/constants/app_colors.dart';
-import 'package:doctor_appointment/features/auth/view/login_view.dart';
 import 'package:doctor_appointment/shared/custom_btn.dart';
 import 'package:doctor_appointment/shared/custom_text.dart';
+import 'package:doctor_appointment/test/bloc/fetch_bloc.dart';
+import 'package:doctor_appointment/test/root.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
+
+import '../../auth/view/login_view.dart';
 
 class OnboardingView extends StatelessWidget {
   const OnboardingView({super.key});
@@ -89,12 +94,16 @@ class OnboardingView extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (c) => LoginView()),
-                    );
+                      MaterialPageRoute(
+                        builder: (c) => LoginView(),
+                        ));
+
                   },
                   text: 'Get Started',
                   width: 311,
                   height: 52,
+                  bgColor: AppColors.primaryColor,
+                  color: AppColors.backgroundColor,
                 ),
               ],
             ),

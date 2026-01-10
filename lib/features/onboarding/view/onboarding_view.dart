@@ -1,11 +1,7 @@
-import 'package:dio/dio.dart';
 import 'package:doctor_appointment/core/constants/app_colors.dart';
 import 'package:doctor_appointment/shared/custom_btn.dart';
 import 'package:doctor_appointment/shared/custom_text.dart';
-import 'package:doctor_appointment/test/bloc/fetch_bloc.dart';
-import 'package:doctor_appointment/test/root.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 

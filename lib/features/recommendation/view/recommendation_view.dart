@@ -23,9 +23,15 @@ class RecommendationView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  ContainerBtn(
-                    child: Center(child: Icon(Icons.arrow_back_ios_new)),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: ContainerBtn(
+                      child: Center(child: Icon(Icons.arrow_back_ios_new)),
+                    ),
                   ),
+
                   CustomText(
                     text: 'Recommendation Doctor',
                     color: AppColors.primaryText,
@@ -42,7 +48,7 @@ class RecommendationView extends StatelessWidget {
                 children: [
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                    width: 340,
+                    width: 290,
                     height: 46,
                     decoration: BoxDecoration(
                       color: Color.fromRGBO(245, 245, 245, 1),
@@ -75,10 +81,7 @@ class RecommendationView extends StatelessWidget {
               Gap(24),
 
               /// List
-              ListItemWidget(
-                height: MediaQuery.of(context).size.height,
-                itemCount: 20,
-              ),
+              ListItemWidget(height: 600),
             ],
           ),
         ),

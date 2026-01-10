@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class HomeHeader extends StatelessWidget {
-  const HomeHeader({super.key});
-  
+  const HomeHeader({super.key, required this.text});
 
+  final String text;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -17,7 +17,7 @@ class HomeHeader extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomText(
-              text: 'Salah',
+              text: text,
               size: 18,
               weight: FontWeight.w700,
               color: AppColors.primaryText,

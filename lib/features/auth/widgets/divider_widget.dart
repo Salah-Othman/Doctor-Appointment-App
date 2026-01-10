@@ -9,7 +9,7 @@ class DividerWidget extends StatelessWidget {
     return Row(
       children: [
         Container(
-          width: 128,
+          width: 107,
           height: 1,
           decoration: BoxDecoration(color: Color.fromRGBO(224, 224, 224, 1)),
         ),
@@ -20,7 +20,7 @@ class DividerWidget extends StatelessWidget {
           color: Color.fromRGBO(158, 158, 158, 1),
         ),
         Container(
-          width: 128,
+          width: 107,
           height: 1,
           decoration: BoxDecoration(color: Color.fromRGBO(224, 224, 224, 1)),
         ),

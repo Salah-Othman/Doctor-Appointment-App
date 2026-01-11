@@ -26,7 +26,7 @@ class ListItemWidget extends StatelessWidget {
               return Center(child: CircularProgressIndicator());
             }
             else if(state is HomeLoaded){
-              final data = state.home.data;
+              // final data = state.home.data;
               return SizedBox(
                 height: height,
                 child: ListView.builder(

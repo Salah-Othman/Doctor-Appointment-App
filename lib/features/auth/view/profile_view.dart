@@ -60,12 +60,9 @@ class ProfileView extends StatelessWidget {
                   ],
                 ),
               ),
-            UserWidget(),
-
-
-
-        ],
-      ),
+              UserWidget(),
+            ],
+          ),
           Positioned(
             top: 160,
             right: 120,
@@ -101,9 +98,7 @@ class ProfileView extends StatelessWidget {
               ),
             ),
           ),
-
-
-        ]
+        ],
       ),
     );
   }

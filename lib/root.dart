@@ -1,11 +1,11 @@
 import 'package:doctor_appointment/core/constants/app_colors.dart';
 import 'package:doctor_appointment/features/auth/view/profile_view.dart';
 import 'package:doctor_appointment/features/home/view/home_view.dart';
-import 'package:doctor_appointment/features/home/view/home_view.dart';
-import 'package:doctor_appointment/features/recommendation/view/recommendation_view.dart';
+
 import 'package:doctor_appointment/features/search/view/search_view.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
+
+import 'features/appointment/view/appointment_view.dart';
 
 class Root extends StatefulWidget {
   const Root({super.key});
@@ -20,7 +20,7 @@ class _RootState extends State<Root> {
   final List<Widget> pages = [
     HomeView(),
     SearchView(),
-    RecommendationView(),
+    AppointmentView(),
     ProfileView(),
   ];
 
@@ -33,9 +33,6 @@ class _RootState extends State<Root> {
 
       /// Pages
       body: IndexedStack(index: currentIndex, children: pages),
-
-      /// Center Search Button
-
 
       /// Bottom Navbar
       bottomNavigationBar: BottomAppBar(

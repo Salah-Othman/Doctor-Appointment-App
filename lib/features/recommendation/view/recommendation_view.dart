@@ -5,6 +5,7 @@ import 'package:doctor_appointment/shared/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+
 class RecommendationView extends StatelessWidget {
   const RecommendationView({super.key});
 
@@ -31,14 +32,20 @@ class RecommendationView extends StatelessWidget {
                       child: Center(child: Icon(Icons.arrow_back_ios_new)),
                     ),
                   ),
-
                   CustomText(
                     text: 'Recommendation Doctor',
                     color: AppColors.primaryText,
                     size: 18,
                     weight: FontWeight.w600,
                   ),
-                  ContainerBtn(child: Center(child: Icon(Icons.more_horiz))),
+                  ContainerBtn(
+                    child: Center(
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.more_horiz),
+                      ),
+                    ),
+                  ),
                 ],
               ),
               Gap(32),

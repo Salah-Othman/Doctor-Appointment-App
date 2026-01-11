@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import '../../../core/constants/app_colors.dart';
-import '../../../root.dart';
 import '../../recommendation/view/recommendation_view.dart';
 import '../widgets/card_widget.dart';
 import '../widgets/home_header.dart';

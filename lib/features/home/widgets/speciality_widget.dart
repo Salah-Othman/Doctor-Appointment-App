@@ -1,5 +1,4 @@
 import 'package:doctor_appointment/core/constants/app_colors.dart';
-import 'package:doctor_appointment/features/home/data/model/speciality_model.dart';
 import 'package:doctor_appointment/shared/circle_widget.dart';
 import 'package:doctor_appointment/shared/custom_text.dart';
 import 'package:flutter/material.dart';

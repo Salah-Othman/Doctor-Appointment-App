@@ -7,6 +7,8 @@ class SigninModel {
 
   factory SigninModel.fromJson(Map<String, dynamic> json) {
     print('🔍 Parsing user data - token field: ${json['token']}');
-    return SigninModel(name: json['name'].toString(), token: json['token']);
+    print('🔍 Parsing user data - name field: ${json['username']}');
+
+    return SigninModel(name: json['username'].toString(), token: json['token']);
   }
 }

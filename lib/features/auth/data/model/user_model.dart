@@ -1,56 +1,59 @@
-/*
-{
-    "message": "Successful query",
-    "data": [
-        {
-            "id": 6176,
-            "name": "Salah",
-            "email": "salahos@gmail.com",
-            "phone": "222667845",
-            "gender": "male"
-        }
-    ],
-    "status": true,
-    "code": 200
-}
- */
+class UserResponse {
+  bool? status;
+  String? message;
+  int? code;
+  List<UserData>? data;
 
+  UserResponse({this.status, this.message, this.code, this.data});
 
-class UserModel {
-  final List<Data> data;
+  UserResponse.fromJson(Map<String, dynamic> json) {
+    status = json['status'];
+    message = json['message'];
+    code = json['code'];
+    if (json['data'] != null) {
+      data = <UserData>[];
+      json['data'].forEach((v) {
+        data!.add(UserData.fromJson(v));
+      });
+    }
+  }
 
-
-  UserModel({
-    required this.data,
-  });
-
-  factory UserModel.fromjson(Map<String, dynamic> json) {
-    return UserModel(
-      data: (json['data'] as List).map((e) => Data.fromjson(e)).toList(),
-
-    );
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['status'] = status;
+    data['message'] = message;
+    data['code'] = code;
+    if (this.data != null) {
+      data['data'] = this.data!.map((v) => v.toJson()).toList();
+    }
+    return data;
   }
 }
-class Data{
-  final int id;
-  final String name;
-  final String email;
-  final String phone;
-  final String gender;
-  Data({
-    required this.id,
-    required this.name,
-    required this.email,
-    required this.phone,
-    required this.gender,
-  });
-  factory Data.fromjson(Map<String, dynamic> json) {
-    return Data(
-      id: json['id'] ?? 0,
-      name: json['name'] ?? '',
-      email: json['email'] ?? '',
-      phone: json['phone'] ?? '',
-      gender: json['gender']?? '',
-    );
+
+class UserData {
+  int? id;
+  String? name;
+  String? email;
+  String? phone;
+  String? gender;
+
+  UserData({this.id, this.name, this.email, this.phone, this.gender});
+
+  UserData.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    email = json['email'];
+    phone = json['phone'];
+    gender = json['gender'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['email'] = email;
+    data['phone'] = phone;
+    data['gender'] = gender;
+    return data;
   }
 }

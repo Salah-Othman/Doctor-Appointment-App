@@ -35,9 +35,9 @@ class SignUpError extends AuthState {
 
 /// Get User
 final class GetUserSuccess extends AuthState {
-  final UserModel user;
+  final List<UserData> users;
 
-  GetUserSuccess({required this.user});
+  GetUserSuccess({required this.users});
 }
 
 final class GetUserLoading extends AuthState {}

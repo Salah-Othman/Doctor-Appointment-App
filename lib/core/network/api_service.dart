@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:doctor_appointment/features/search/data/model/search_model.dart';
 
 import 'api_exceptions.dart';
 import 'dio_client.dart';
@@ -15,6 +16,47 @@ class ApiService {
       return response.data;
     } on DioException catch (e) {
       return ApiExceptions.handleError(e);
+    }
+  }
+
+  //// Search
+  Future<List<SearchModel>> searchDoctors(String name) async {
+    try {
+      final response = await _dioClient.dio.get(
+        '/doctor/doctor-search',
+        queryParameters: {'name': name},
+      );
+
+      if (response.statusCode == 200) {
+        final data = response.data;
+
+        // Handle different response structures
+        if (data is Map<String, dynamic>) {
+          // Check if data is wrapped in a 'data' key
+          final doctorsData = data['data'] ?? data;
+
+          if (doctorsData is List) {
+            return doctorsData
+                .map((json) => SearchModel.fromJson(json as Map<String, dynamic>))
+                .toList();
+          }
+        } else if (data is List) {
+          return data
+              .map((json) => SearchModel.fromJson(json as Map<String, dynamic>))
+              .toList();
+        }
+
+        return [];
+      } else {
+        throw DioException(
+          requestOptions: response.requestOptions,
+          message: 'Failed to search doctors',
+        );
+      }
+    } on DioException catch (e) {
+      throw ApiExceptions.handleError(e);
+    } catch (e) {
+      throw Exception('Unexpected error: $e');
     }
   }
 

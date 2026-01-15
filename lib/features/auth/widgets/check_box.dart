@@ -11,7 +11,7 @@ class CheckBoxWidget extends StatefulWidget {
 }
 
 class _CheckBoxWidgetState extends State<CheckBoxWidget> {
-  late bool cheak = false;
+  late bool isCheck = false;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -26,9 +26,14 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Checkbox(
-                value: cheak,
-                onChanged: (v) {
-                 
+                value: isCheck,
+                onChanged: (bool ? v) {
+                 setState(() {
+                   isCheck = v ?? false;
+                 });
+                 isCheck ?
+                     widget.onPressed!()
+                     : null;
                 },
                 activeColor: AppColors.primaryColor,
                 side: BorderSide(

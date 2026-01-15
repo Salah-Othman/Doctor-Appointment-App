@@ -18,8 +18,8 @@ class ApiExceptions {
     }
 
 
-    print(statusCode);
-    print(data);
+    print('statusCode is = $statusCode');
+    print('data is = $data');
 
     switch (error.type) {
       case DioExceptionType.connectionTimeout:
@@ -33,23 +33,3 @@ class ApiExceptions {
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// if(statusCode == 302) {
-//   return ApiError(message: 'The Email is Already Taken');
-// }
-
-// print('Error response: ${error.response?.data}');
-// print('Status code: $statusCode');

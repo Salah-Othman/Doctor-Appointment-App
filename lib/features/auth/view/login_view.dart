@@ -1,4 +1,5 @@
 import 'package:doctor_appointment/core/constants/app_colors.dart';
+import 'package:doctor_appointment/features/auth/view/signup_view.dart';
 import 'package:doctor_appointment/features/auth/widgets/check_box.dart';
 import 'package:doctor_appointment/features/auth/widgets/custom_account_text.dart';
 import 'package:doctor_appointment/features/auth/widgets/custom_form_field.dart';
@@ -9,6 +10,7 @@ import 'package:doctor_appointment/features/auth/widgets/social_login.dart';
 import 'package:doctor_appointment/features/home/view/home_view.dart';
 import 'package:doctor_appointment/root.dart';
 import 'package:doctor_appointment/shared/custom_btn.dart';
+import 'package:doctor_appointment/shared/success_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -23,23 +25,21 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // double sizeWidth = MediaQuery.of(context).size.width;
-    // double sizeHeight = MediaQuery.of(context).size.height;
-
-    // print('width = $sizeWidth');
-    // print('Height = $sizeHeight');
+    double sizeWidth = MediaQuery.of(context).size.width;
+    double sizeHeight = MediaQuery.of(context).size.height;
+    print('width = $sizeWidth');
+    print('Height = $sizeHeight');
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is SignInLoaded) {
             final user = state.user;
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(SnackBar(content: Text('Login Success')));
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (c) => Root(),
+              MaterialPageRoute(builder: (c) => SuccessWidget(
+                userName : user.name,
+              ),
               )
             );
           } else if (state is SignInError) {
@@ -104,7 +104,7 @@ class LoginView extends StatelessWidget {
                             context.read<AuthCubit>().signIn(email, password);
                           }
                         },
-                        text: state is SignInLoading ? 'Loading' : 'Login',
+                        text: state is SignInLoading ? 'Loading...' : 'Login',
                         width: MediaQuery.of(context).size.width,
                         height: 52,
                         bgColor: AppColors.primaryColor,
@@ -132,7 +132,7 @@ class LoginView extends StatelessWidget {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (c) => HomeView()),
+                            MaterialPageRoute(builder: (c) => SignupView()),
                           );
                         },
                       ),

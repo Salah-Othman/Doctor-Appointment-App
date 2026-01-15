@@ -1,35 +1,41 @@
 import 'package:doctor_appointment/core/constants/app_colors.dart';
 import 'package:doctor_appointment/features/auth/view/profile_view.dart';
 import 'package:doctor_appointment/features/home/view/home_view.dart';
-
+import 'package:doctor_appointment/features/recommendation/view/recommendation_view.dart';
 import 'package:doctor_appointment/features/search/view/search_view.dart';
 import 'package:flutter/material.dart';
-
 import 'features/appointment/view/appointment_view.dart';
 
 class Root extends StatefulWidget {
-  const Root({super.key});
+  final String userName;
+
+  const Root({super.key, required this.userName});
 
   @override
   State<Root> createState() => _RootState();
 }
 
 class _RootState extends State<Root> {
+  late String name = widget.userName;
+
   int currentIndex = 0;
 
-  final List<Widget> pages = [
-    HomeView(),
+  late final List<Widget> pages = [
+    HomeView(user: widget.userName),
     SearchView(),
     AppointmentView(),
     ProfileView(),
   ];
 
-
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.backgroundColor,
+      backgroundColor: AppColors.primaryColor,
 
       /// Pages
       body: IndexedStack(index: currentIndex, children: pages),
@@ -37,12 +43,12 @@ class _RootState extends State<Root> {
       /// Bottom Navbar
       bottomNavigationBar: BottomAppBar(
         color: AppColors.backgroundColor,
-        height: 55,
+        height: 80,
 
         child: SizedBox(
-          height: 50,
+          height: 80,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _navItem(Icons.home_outlined, 0),
               _navItem(Icons.search, 1),
@@ -68,5 +74,3 @@ class _RootState extends State<Root> {
     );
   }
 }
-
-

@@ -16,33 +16,39 @@ class SpecialityView extends StatelessWidget {
       create: (context) => HomeCubit()..getSpeciality(),
       child: Scaffold(
         backgroundColor: AppColors.backgroundColor,
+        appBar: AppBar(
+          backgroundColor: AppColors.backgroundColor,
+          title:  CustomText(
+                    text: 'Doctor Speciality',
+                    color: AppColors.primaryText,
+                    size: 18,
+                    weight: FontWeight.w600,
+                  ),
+
+          centerTitle: true,
+          automaticallyImplyLeading: false,
+          flexibleSpace: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            child: Align(
+              alignment: Alignment.bottomLeft,
+              child: ContainerBtn(
+                child: Center(
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(Icons.arrow_back_ios_new_outlined),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [
-              Gap(50),
-              Row(
-                children: [
-                  ContainerBtn(
-                    child: IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: Icon(Icons.arrow_back_ios_new),
-                    ),
-                  ),
-                  Gap(70),
-                  Center(
-                    child: CustomText(
-                      text: 'Doctor Speciality',
-                      color: AppColors.primaryText,
-                      size: 18,
-                      weight: FontWeight.w600,
-                    ),
-                  ),
-                ],
-              ),
-              Gap(20),
+              Gap(30),
               BlocBuilder<HomeCubit, HomeState>(
                 builder: (context, state) {
                   if (state is SpecialityLoading) {

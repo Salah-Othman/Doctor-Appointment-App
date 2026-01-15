@@ -10,14 +10,14 @@ class UserWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  BlocProvider(create: (_) => AuthCubit()..getUser(),
+    return  BlocProvider(create: (_) => AuthCubit()..fetchUsers(),
     child: BlocBuilder<AuthCubit, AuthState>(
         builder: (context, state) {
           if(state is GetUserLoading){
             return Center(child: CircularProgressIndicator());
           }
           else if(state is GetUserSuccess) {
-            final data = state.user.data;
+            final user = state.users;
             return Container(
               width: MediaQuery
                   .of(context)
@@ -35,7 +35,7 @@ class UserWidget extends StatelessWidget {
                 children: [
                   Gap(65),
                   CustomText(
-                    text: 'user.name',
+                    text:'name' ,
                     weight: FontWeight.w600,
                     size: 20,
                     color: Color.fromRGBO(18, 18, 18, 1),

@@ -25,7 +25,7 @@ class SpecialityWidget extends StatelessWidget {
                 height: 86,
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
-                  separatorBuilder: (context, index) => Gap(16),
+                  separatorBuilder: (context, index) => Gap(12),
                   itemCount:specialization.take(4).length,
                   itemBuilder: (context, index) {
                     final speciality = specialization[index];

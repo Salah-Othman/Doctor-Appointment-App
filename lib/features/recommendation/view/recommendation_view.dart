@@ -13,41 +13,51 @@ class RecommendationView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
+      appBar: AppBar(
+        backgroundColor: AppColors.backgroundColor,
+        title:CustomText(
+          text: 'Recommendation Doctor',
+          color: AppColors.primaryText,
+          size: 18,
+          weight: FontWeight.w600,
+        ),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+        flexibleSpace: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          child: Align(
+            alignment: Alignment.bottomLeft,
+            child: ContainerBtn(
+              child: Center(
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(Icons.arrow_back_ios_new_outlined),
+                ),
+              ),
+            ),
+          ),
+        ),
+        actions: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: ContainerBtn(
+                child: Center(
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.more_horiz),
+                  ),
+                ),
+                ),
+        ),
+              ]
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Gap(60),
-
-              /// Header
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: ContainerBtn(
-                      child: Center(child: Icon(Icons.arrow_back_ios_new)),
-                    ),
-                  ),
-                  CustomText(
-                    text: 'Recommendation Doctor',
-                    color: AppColors.primaryText,
-                    size: 18,
-                    weight: FontWeight.w600,
-                  ),
-                  ContainerBtn(
-                    child: Center(
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.more_horiz),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
               Gap(32),
 
               /// Search & filter

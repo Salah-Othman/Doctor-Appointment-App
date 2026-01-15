@@ -5,9 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class HomeHeader extends StatelessWidget {
-  const HomeHeader({super.key, required this.text});
+  const HomeHeader({super.key, required this.text, this.onTap});
 
   final String text;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -29,23 +30,26 @@ class HomeHeader extends StatelessWidget {
             ),
           ],
         ),
-        CircleWidget(
-          color: Color.fromRGBO(245, 245, 245, 2),
-          width: 48,
-          height: 48,
-          child: Stack(
-            children: [
-              Center(child: SvgPicture.asset('assets/notification_icon.svg')),
-              Positioned(
-                top: 13,
-                left: 27,
-                child: CircleWidget(
-                  color: Color.fromRGBO(255, 76, 94, 1),
-                  width: 8,
-                  height: 8,
+        GestureDetector(
+          onTap: onTap,
+          child: CircleWidget(
+            color: Color.fromRGBO(245, 245, 245, 2),
+            width: 48,
+            height: 48,
+            child: Stack(
+              children: [
+                Center(child: SvgPicture.asset('assets/notification_icon.svg')),
+                Positioned(
+                  top: 13,
+                  left: 27,
+                  child: CircleWidget(
+                    color: Color.fromRGBO(255, 76, 94, 1),
+                    width: 8,
+                    height: 8,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ],

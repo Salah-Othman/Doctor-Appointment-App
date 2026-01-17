@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => AuthCubit()),
+        BlocProvider(create: (context) => AuthCubit()),
         BlocProvider(create: (context) => SearchCubit(apiService: ApiService())),
       ],
       child: MaterialApp(debugShowCheckedModeBanner: false, home: Splash()),

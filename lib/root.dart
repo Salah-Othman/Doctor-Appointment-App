@@ -1,8 +1,7 @@
 import 'package:doctor_appointment/core/constants/app_colors.dart';
-import 'package:doctor_appointment/features/auth/view/profile_view.dart';
 import 'package:doctor_appointment/features/home/view/home_view.dart';
-import 'package:doctor_appointment/features/recommendation/view/recommendation_view.dart';
 import 'package:doctor_appointment/features/search/view/search_view.dart';
+import 'package:doctor_appointment/features/user/view/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'features/appointment/view/appointment_view.dart';
 

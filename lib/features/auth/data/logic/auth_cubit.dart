@@ -1,4 +1,3 @@
-
 import 'package:dio/dio.dart';
 import 'package:doctor_appointment/core/network/api_service.dart';
 import 'package:doctor_appointment/features/auth/data/model/signin_model.dart';
@@ -135,4 +134,6 @@ class AuthCubit extends Cubit<AuthState> {
       emit(GetUserError(message: "An error occurred: $e"));
     }
   }
+
+ 
 }

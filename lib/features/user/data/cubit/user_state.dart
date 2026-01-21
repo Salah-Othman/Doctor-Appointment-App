@@ -16,3 +16,16 @@ class UserError extends UserState {
   final String message;
   UserError(this.message);
 }
+
+class LogoutInitial extends UserState {}
+
+class LogoutLoading extends UserState {}
+
+class LogoutLoaded extends UserState {
+  
+}
+
+class LogoutError extends UserState {
+  final String message;
+  LogoutError(this.message);
+}

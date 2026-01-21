@@ -1,6 +1,7 @@
 import 'package:doctor_appointment/core/constants/app_colors.dart';
 import 'package:doctor_appointment/features/user/data/cubit/user_cubit.dart';
 import 'package:doctor_appointment/features/user/data/cubit/user_state.dart';
+import 'package:doctor_appointment/features/user/view/setting_view.dart';
 import 'package:doctor_appointment/shared/circle_widget.dart';
 import 'package:doctor_appointment/shared/custom_text.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,12 @@ class ProfileView extends StatelessWidget {
                       weight: FontWeight.w600,
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (c) => SettingView()),
+                        );
+                      },
                       icon: Icon(
                         Icons.settings_outlined,
                         color: AppColors.backgroundColor,

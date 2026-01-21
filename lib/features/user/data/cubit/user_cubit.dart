@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'user_state.dart';
 
 class UserCubit extends Cubit<UserState> {
-  final ApiService api = ApiService();
+  ApiService api = ApiService();
 
   UserCubit() : super(UserInitial());
 
@@ -17,6 +17,16 @@ class UserCubit extends Cubit<UserState> {
       emit(UserLoaded(UserResponse.fromJson(response))); // ✅ NO .data
     } catch (e) {
       emit(UserError(e.toString()));
+    }
+  }
+
+  Future<void> logOut() async {
+    emit(LogoutLoading());
+    try {
+      final res = await api.post('/auth/logout', {});
+      emit(LogoutLoaded());
+    } catch (e) {
+      emit(LogoutError(e.toString()));
     }
   }
 }

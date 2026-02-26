@@ -14,7 +14,7 @@ import 'notification.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key, required this.user});
-final String user;
+  final String user;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -28,10 +28,14 @@ final String user;
               Gap(50),
 
               /// Header
-              HomeHeader(text: 'Hi, $user!',
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => NotificationView()));
-              },
+              HomeHeader(
+                text: 'Hi, $user!',
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => NotificationView()),
+                  );
+                },
               ),
 
               /// Card
@@ -39,18 +43,31 @@ final String user;
               Gap(24),
 
               /// Speciality
-              SeeAll(text: 'Doctor Speciality', onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => SpecialityView()));
-              }),
+              SeeAll(
+                text: 'Doctor Speciality',
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SpecialityView()),
+                  );
+                },
+              ),
               Gap(16),
               SpecialityWidget(),
               Gap(23),
 
               /// List Item
-              SeeAll(text: 'Recommendation Doctor', onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => RecommendationView()));
-
-              }),
+              SeeAll(
+                text: 'Recommendation Doctor',
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RecommendationView(),
+                    ),
+                  );
+                },
+              ),
               ListItemWidget(height: 220),
             ],
           ),

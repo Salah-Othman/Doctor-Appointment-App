@@ -8,6 +8,7 @@ class UserCubit extends Cubit<UserState> {
 
   UserCubit() : super(UserInitial());
 
+  /// Get User Profile
   Future<void> fetchUsers() async {
     emit(UserLoading());
     try {
@@ -20,10 +21,11 @@ class UserCubit extends Cubit<UserState> {
     }
   }
 
+  /// Logout
   Future<void> logOut() async {
     emit(LogoutLoading());
     try {
-      final res = await api.post('/auth/logout', {});
+      await api.post('/auth/logout', {});
       emit(LogoutLoaded());
     } catch (e) {
       emit(LogoutError(e.toString()));

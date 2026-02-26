@@ -11,7 +11,6 @@ part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   final ApiService api = ApiService();
-  SigninModel? _user;
 
   AuthCubit() : super(AuthInitial());
 
@@ -47,7 +46,6 @@ class AuthCubit extends Cubit<AuthState> {
           print('⚠️ No token received from server!');
         }
 
-        _user = user;
         emit(SignInLoaded(user: user));
         return user;
       } else {
